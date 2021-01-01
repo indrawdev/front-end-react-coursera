@@ -12,7 +12,13 @@ class Contact extends Component {
 			email: '',
 			agree: false,
 			contactType: 'Tel.',
-			message: ''
+			message: '',
+			touched: {
+					firstname: false,
+					lastname: false,
+					telnum: false,
+					email: false
+			}
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
