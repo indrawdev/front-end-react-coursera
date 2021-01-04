@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+	Card, CardImg, CardBody, CardText, CardSubtitle, CardTitle,
+} from "reactstrap";
+
 import { Loading } from './LoadingComponent';
 
 function RenderCard({ item, isLoading, errMess }) {

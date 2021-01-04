@@ -20,35 +20,27 @@ const mapStateToProps = state => {
 		promotions: state.promotions,
 		leaders: state.leaders
 	}
+	
 }
 
 
 const mapDispatchToProps = dispatch => ({
 
+	
 	addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
-
-	// fetchDishes: () => { dispatch(fetchDishes()) }
 	
 });
 
 class Main extends Component {
-
-	constructor(props) {
-		super(props);
-	}
-
+	
+	//fetchDishes: () => { dispatch(fetchDishes()) }
 
 	onDishSelect(dishId) {
 		this.setState({ selectedDish: dishId });
 	}
 
-	componentDidMount() {
-		this.props.fetchDishes();
-	}
 
 	render() {
-
-
 		const HomePage = () => {
 			return (
 				<Home
@@ -88,6 +80,10 @@ class Main extends Component {
 				<Footer />
 			</div>
 		);
+	}
+
+	componentDidMount() {
+		this.props.fetchDishes();
 	}
 }
 
