@@ -1,7 +1,7 @@
 import React from 'react';
 import {
 	Card, CardImg, CardBody, CardText, CardSubtitle, CardTitle,
-} from "reactstrap";
+} from 'reactstrap';
 import { FadeTransform } from 'react-animation-components';
 
 import { Loading } from './LoadingComponent';
@@ -41,8 +41,20 @@ function RenderCard({ item, isLoading, errMess }) {
 
 function Home(props) {
 	return (
-		<RenderCard item={props.promotion} isLoading={props.promoLoading} errMess={props.promoErrMess} />
+		<div className="container">
+			<div className="row align-items-start">
+				<div className="col-12 col-md m-1">
+					<RenderCard item={props.dish} isLoading={props.dishesLoading} errMess={props.dishesErrMess} />
+				</div>
+				<div className="col-12 col-md m-1">
+					<RenderCard item={props.promotion} isLoading={props.promoLoading} errMess={props.promoErrMess} />
+				</div>
+				<div className="col-12 col-md m-1">
+					<RenderCard item={props.leader} isLoading={props.leadersLoading} errMess={props.leadersErrMess} />
+				</div>
+			</div>
+		</div>
 	);
 }
 
-export default Home;   
+export default Home;
