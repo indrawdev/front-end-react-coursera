@@ -6,6 +6,7 @@ import {
 
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
@@ -115,7 +116,11 @@ class CommentForm extends Component {
 function RenderDish({ dish }) {
 	if (dish != null) {
 		return (
-			<div>
+			<FadeTransform
+				in
+				transformProps={{
+					exitTransform: 'scale(0.5) translateY(-50%)'
+				}}>
 				<Card>
 					<CardImg top src={baseUrl + dish.image} alt={dish.name} />
 					<CardBody>
@@ -123,7 +128,7 @@ function RenderDish({ dish }) {
 						<CardText>{dish.description}</CardText>
 					</CardBody>
 				</Card>
-			</div>
+			</FadeTransform>
 		);
 	} else {
 		return (
@@ -132,23 +137,24 @@ function RenderDish({ dish }) {
 	}
 }
 
-function RenderComments({comments, postComment, dishId}) {
+function RenderComments({ comments, postComment, dishId }) {
 	//console.log(comments);
 	if (comments != null) {
 		let list = comments.map((comment) => {
 			return (
-				<li key={comment.id}>
-					<div>
-						<p>{comment.comment}</p>
-						<p>-- {comment.author}, &nbsp;
-							{new Intl.DateTimeFormat('en-US', {
-							year: 'numeric',
-							month: 'short',
-							day: '2-digit'
-						}).format(new Date(Date.parse(comment.date)))}
-						</p>
-					</div>
-				</li>
+				<FadeTransform
+					in
+					transformProps={{
+						exitTransform: 'scale(0.5) translateY(-50%)'
+					}}>
+					<Card>
+						<CardImg top src={baseUrl + dish.image} alt={dish.name} />
+						<CardBody>
+							<CardTitle>{dish.name}</CardTitle>
+							<CardText>{dish.description}</CardText>
+						</CardBody>
+					</Card>
+				</FadeTransform>
 			)
 		});
 		return (
@@ -191,7 +197,7 @@ const DishDetail = (props) => {
 						postComment={props.postComment}
 						dishId={props.dish.id}
 					/>
-					
+
 					<CommentForm dishId={dishId} postComment={postComment} />
 				</div>
 			</div>
